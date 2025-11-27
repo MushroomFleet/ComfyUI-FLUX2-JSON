@@ -1,6 +1,7 @@
 # FLUX.2 JSON Prompt Builder for ComfyUI
 
 ![godzilla-flux2-json](https://raw.githubusercontent.com/MushroomFleet/ComfyUI-FLUX2-JSON/refs/heads/main/examples/id6_00001_.png)
+[Akira-Insert-Character](https://raw.githubusercontent.com/MushroomFleet/ComfyUI-FLUX2-JSON/refs/heads/main/examples/ComfyUI_temp_ttbdg_00004_.png)
 
 A comprehensive suite of custom nodes for building structured JSON prompts for FLUX.2 image generation with precision and control.
 
@@ -503,4 +504,5 @@ If you use this codebase in your research or project, please cite:
 ---
 
 **Ready to build precise, professional prompts for FLUX.2? Install now and start creating!** 🚀
+
 
