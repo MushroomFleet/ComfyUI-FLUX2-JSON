@@ -32,11 +32,21 @@ class FLUX2_SceneBuilder(FLUX2BaseNode):
                     "default": "",
                     "placeholder": "Additional environmental details (optional)..."
                 }),
-                "time_of_day": (["", "Morning", "Afternoon", "Evening", "Night", "Golden Hour", "Blue Hour"], {
+                "time_of_day": (["", "Morning", "Afternoon", "Evening", "Night", "Golden Hour", "Blue Hour", "Custom"], {
                     "default": ""
                 }),
-                "weather": (["", "Clear", "Cloudy", "Overcast", "Rainy", "Foggy", "Snowy"], {
+                "custom_time_of_day": ("STRING", {
+                    "multiline": False,
+                    "default": "",
+                    "placeholder": "Enter custom time of day..."
+                }),
+                "weather": (["", "Clear", "Cloudy", "Overcast", "Rainy", "Foggy", "Snowy", "Custom"], {
                     "default": ""
+                }),
+                "custom_weather": ("STRING", {
+                    "multiline": False,
+                    "default": "",
+                    "placeholder": "Enter custom weather conditions..."
                 }),
             }
         }
@@ -52,7 +62,9 @@ class FLUX2_SceneBuilder(FLUX2BaseNode):
                     custom_description="",
                     environment_details="",
                     time_of_day="",
-                    weather=""):
+                    custom_time_of_day="",
+                    weather="",
+                    custom_weather=""):
         """
         Build scene description from inputs.
         
@@ -61,7 +73,9 @@ class FLUX2_SceneBuilder(FLUX2BaseNode):
             custom_description: Custom scene description (used if scene_type is Custom)
             environment_details: Additional environmental context
             time_of_day: Time of day setting
+            custom_time_of_day: Custom time of day (used when time_of_day is "Custom")
             weather: Weather conditions
+            custom_weather: Custom weather description (used when weather is "Custom")
         
         Returns:
             Complete scene description string
@@ -80,11 +94,15 @@ class FLUX2_SceneBuilder(FLUX2BaseNode):
         # Build additional context parts
         context_parts = []
         
-        if time_of_day:
-            context_parts.append(f"{time_of_day.lower()} lighting")
+        # Handle time of day - use custom_time_of_day if "Custom" is selected
+        final_time = custom_time_of_day.strip() if time_of_day == "Custom" else time_of_day
+        if final_time:
+            context_parts.append(f"{final_time.lower()} lighting")
         
-        if weather:
-            context_parts.append(f"{weather.lower()} conditions")
+        # Handle weather - use custom_weather if "Custom" is selected
+        final_weather = custom_weather.strip() if weather == "Custom" else weather
+        if final_weather:
+            context_parts.append(f"{final_weather.lower()} conditions")
         
         if environment_details:
             context_parts.append(environment_details.strip())
@@ -102,10 +120,9 @@ class FLUX2_SceneBuilder(FLUX2BaseNode):
         if scene_type == "Custom" and not custom_description:
             return "Custom scene type requires a custom_description"
         return True
-
-
-# For display in UI
-FLUX2_SceneBuilder.DESCRIPTION = """
+    
+    # Description for display in UI
+    DESCRIPTION = """
 Define the overall scene context and environment.
 
 Use presets for common scene types or create custom descriptions.

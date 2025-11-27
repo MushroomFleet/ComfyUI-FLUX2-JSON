@@ -1,0 +1,31 @@
+{
+  "scene": "Neo-Tokyo highway at night with towering brutalist architecture and flickering holographic advertisements",
+  "subjects": [
+    {
+      "description": "Red Kaneda motorcycle with intricate mechanical details, glowing plasma trails streaming behind, meticulous line work defining every component",
+      "position": "center foreground in dynamic motion",
+      "action": "Speeding through highway with extreme velocity",
+      "color_palette": ["#CC0000", "#FF3333", "#8B0000"]
+    },
+    {
+      "description": "Vibrant neon signs and holographic advertisements with light bloom effects, urban decay details",
+      "position": "background flanking both sides",
+      "color_palette": ["#00FFFF", "#FF00FF", "#FF1493", "#00CED1"]
+    }
+  ],
+  "style": "Hand-painted animation cel aesthetic with 1980s theatrical anime quality, cel shading with bold shadows and highlights, realistic proportions with gritty texture work, film grain and rich color saturation characteristic of 35mm anime production",
+  "color_palette": ["#CC0000", "#00FFFF", "#FF00FF", "#1A1A1A", "#2C2C2C"],
+  "lighting": "Dramatic neon lighting with cyan and magenta lights reflecting off wet asphalt, light bloom around signs, strong color contrast",
+  "mood": "High-energy, kinetic, cyberpunk intensity, gritty urban atmosphere",
+  "background": "Rain-slicked wet asphalt reflecting neon lights, towering brutalist buildings, urban decay with detailed architectural elements",
+  "composition": "Extreme foreshortening with dramatic perspective, dynamic speed lines creating motion blur effect, strong leading lines following motorcycle trajectory",
+  "camera": {
+    "angle": "Low angle with extreme perspective creating dramatic foreshortening",
+    "distance": "Medium shot",
+    "lens-mm": 24,
+    "f-number": "f/2.8",
+    "ISO": 800,
+    "depth_of_field": "Moderate depth with motion blur on background elements, sharp focus on motorcycle with speed line effects",
+    "focus": "Sharp focus on motorcycle mechanical details with plasma trail glow, background showing characteristic anime motion blur"
+  }
+}

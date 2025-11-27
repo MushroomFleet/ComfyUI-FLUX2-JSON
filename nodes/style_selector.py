@@ -15,6 +15,12 @@ class FLUX2_StyleSelector(FLUX2BaseNode):
     def INPUT_TYPES(cls):
         style_categories = ["Custom"] + list(FLUX2Presets.STYLE_CATEGORIES.keys())
         
+        # Build comprehensive preset list with category prefixes
+        all_presets = [""]  # Keep empty option for flexibility
+        for category, presets in FLUX2Presets.STYLE_CATEGORIES.items():
+            for preset in presets:
+                all_presets.append(f"{category}: {preset}")
+        
         return {
             "required": {
                 "style_category": (style_categories, {
@@ -22,7 +28,7 @@ class FLUX2_StyleSelector(FLUX2BaseNode):
                 }),
             },
             "optional": {
-                "style_preset": ([""], {
+                "style_preset": (all_presets, {
                     "default": ""
                 }),
                 "custom_style": ("STRING", {
@@ -78,8 +84,13 @@ class FLUX2_StyleSelector(FLUX2BaseNode):
             presets = FLUX2Presets.STYLE_CATEGORIES.get(style_category, [])
             
             if style_preset and presets:
+                # Strip category prefix if present (format: "Category: preset")
+                preset_text = style_preset
+                if ": " in preset_text:
+                    preset_text = preset_text.split(": ", 1)[1]
+                
                 # Try to find matching preset
-                matching = [p for p in presets if style_preset.lower() in p.lower()]
+                matching = [p for p in presets if preset_text.lower() in p.lower()]
                 if matching:
                     style = matching[0]
                 elif presets:
@@ -105,10 +116,9 @@ class FLUX2_StyleSelector(FLUX2BaseNode):
     def get_style_presets(cls, style_category):
         """Get available presets for a category (for UI updates)"""
         return FLUX2Presets.STYLE_CATEGORIES.get(style_category, [])
-
-
-# For display in UI
-FLUX2_StyleSelector.DESCRIPTION = """
+    
+    # Description for display in UI
+    DESCRIPTION = """
 Choose artistic style and rendering approach.
 
 Categories:

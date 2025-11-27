@@ -30,8 +30,13 @@ class FLUX2_CameraRig(FLUX2BaseNode):
                     "default": ""
                 }),
                 "distance": (["", "Extreme close-up", "Close-up", "Medium shot", 
-                            "Full shot", "Wide shot", "Extreme wide shot"], {
+                            "Full shot", "Wide shot", "Extreme wide shot", "Custom"], {
                     "default": ""
+                }),
+                "custom_distance": ("STRING", {
+                    "multiline": False,
+                    "default": "",
+                    "placeholder": "Enter custom distance/framing..."
                 }),
                 "lens_mm": ("INT", {
                     "default": 0,
@@ -87,6 +92,7 @@ class FLUX2_CameraRig(FLUX2BaseNode):
                     angle="",
                     angle_preset="",
                     distance="",
+                    custom_distance="",
                     lens_mm=0,
                     lens_description="",
                     f_number="",
@@ -103,6 +109,7 @@ class FLUX2_CameraRig(FLUX2BaseNode):
             angle: Camera angle description
             angle_preset: Camera angle preset
             distance: Shot distance/framing
+            custom_distance: Custom distance description (used when distance is "Custom")
             lens_mm: Lens focal length (0 = not specified)
             lens_description: Lens type description
             f_number: Aperture setting
@@ -128,9 +135,10 @@ class FLUX2_CameraRig(FLUX2BaseNode):
         if final_angle:
             camera_data["angle"] = final_angle
         
-        # Distance
-        if distance:
-            camera_data["distance"] = distance
+        # Distance - use custom_distance if "Custom" is selected
+        final_distance = custom_distance.strip() if distance == "Custom" else distance
+        if final_distance:
+            camera_data["distance"] = final_distance
         
         # Lens
         if lens_description:
@@ -182,10 +190,9 @@ class FLUX2_CameraRig(FLUX2BaseNode):
         summary = "\n".join(summary_lines) if summary_lines else "No camera parameters set"
         
         return (camera, summary)
-
-
-# For display in UI
-FLUX2_CameraRig.DESCRIPTION = """
+    
+    # Description for display in UI
+    DESCRIPTION = """
 Complete camera parameter control for photorealistic results.
 
 Use Presets for quick setups:

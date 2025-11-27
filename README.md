@@ -505,7 +505,3 @@ If you use this codebase in your research or project, please cite:
 ---
 
 **Ready to build precise, professional prompts for FLUX.2? Install now and start creating!** 🚀
-
-
-
-
