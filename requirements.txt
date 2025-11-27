@@ -1,0 +1,10 @@
+# FLUX.2 JSON Prompt Builder - Requirements
+# This package has minimal dependencies and uses only Python standard library
+
+# No external dependencies required for Phase 1
+# All functionality uses Python built-ins: json, typing
+
+# Future phases may add:
+# - colorsys (for color harmony generation) - built-in
+# - PIL/Pillow (for image analysis) - ComfyUI dependency
+# - numpy (for calculations) - ComfyUI dependency
