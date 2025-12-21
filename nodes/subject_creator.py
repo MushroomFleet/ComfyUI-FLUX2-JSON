@@ -146,13 +146,6 @@ class FLUX2_SubjectCreator(FLUX2BaseNode):
         )
         
         return (subject,)
-    
-    @classmethod
-    def VALIDATE_INPUTS(cls, description, **kwargs):
-        """Validate required fields"""
-        if not description or not description.strip():
-            return "Description is required for subject creation"
-        return True
 
 
 # For display in UI
