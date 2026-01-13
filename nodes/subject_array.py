@@ -40,6 +40,18 @@ class FLUX2_SubjectArray(FLUX2BaseNode):
                 "subject_8": (FLUX2Types.SUBJECT_OBJECT, {
                     "default": None
                 }),
+                "subject_9": (FLUX2Types.SUBJECT_OBJECT, {
+                    "default": None
+                }),
+                "subject_10": (FLUX2Types.SUBJECT_OBJECT, {
+                    "default": None
+                }),
+                "subject_11": (FLUX2Types.SUBJECT_OBJECT, {
+                    "default": None
+                }),
+                "subject_12": (FLUX2Types.SUBJECT_OBJECT, {
+                    "default": None
+                }),
             }
         }
     
@@ -57,12 +69,16 @@ class FLUX2_SubjectArray(FLUX2BaseNode):
                         subject_5=None,
                         subject_6=None,
                         subject_7=None,
-                        subject_8=None):
+                        subject_8=None,
+                        subject_9=None,
+                        subject_10=None,
+                        subject_11=None,
+                        subject_12=None):
         """
         Collect subject objects into an array.
         
         Args:
-            subject_1 through subject_8: Subject objects
+            subject_1 through subject_12: Subject objects
         
         Returns:
             Tuple of (subjects_array, count, summary)
@@ -71,7 +87,8 @@ class FLUX2_SubjectArray(FLUX2BaseNode):
         # Collect all non-None subjects
         subjects = []
         for subject in [subject_1, subject_2, subject_3, subject_4, 
-                       subject_5, subject_6, subject_7, subject_8]:
+                       subject_5, subject_6, subject_7, subject_8,
+                       subject_9, subject_10, subject_11, subject_12]:
             if subject is not None:
                 subjects.append(subject)
         
@@ -103,7 +120,7 @@ class FLUX2_SubjectArray(FLUX2BaseNode):
 FLUX2_SubjectArray.DESCRIPTION = """
 Collect multiple subject objects into an ordered array.
 
-Connect up to 8 subjects to this node. Empty slots are automatically 
+Connect up to 12 subjects to this node. Empty slots are automatically 
 filtered out, and subjects are maintained in order.
 
 Outputs:
@@ -148,6 +165,20 @@ class FLUX2_SubjectArrayAdvanced(FLUX2BaseNode):
                 "priority_4": ("INT", {"default": 4, "min": 1, "max": 10}),
                 "subject_5": (FLUX2Types.SUBJECT_OBJECT, {"default": None}),
                 "priority_5": ("INT", {"default": 5, "min": 1, "max": 10}),
+                "subject_6": (FLUX2Types.SUBJECT_OBJECT, {"default": None}),
+                "priority_6": ("INT", {"default": 6, "min": 1, "max": 10}),
+                "subject_7": (FLUX2Types.SUBJECT_OBJECT, {"default": None}),
+                "priority_7": ("INT", {"default": 7, "min": 1, "max": 10}),
+                "subject_8": (FLUX2Types.SUBJECT_OBJECT, {"default": None}),
+                "priority_8": ("INT", {"default": 8, "min": 1, "max": 10}),
+                "subject_9": (FLUX2Types.SUBJECT_OBJECT, {"default": None}),
+                "priority_9": ("INT", {"default": 9, "min": 1, "max": 10}),
+                "subject_10": (FLUX2Types.SUBJECT_OBJECT, {"default": None}),
+                "priority_10": ("INT", {"default": 10, "min": 1, "max": 10}),
+                "subject_11": (FLUX2Types.SUBJECT_OBJECT, {"default": None}),
+                "priority_11": ("INT", {"default": 10, "min": 1, "max": 10}),
+                "subject_12": (FLUX2Types.SUBJECT_OBJECT, {"default": None}),
+                "priority_12": ("INT", {"default": 10, "min": 1, "max": 10}),
             }
         }
     
@@ -163,7 +194,14 @@ class FLUX2_SubjectArrayAdvanced(FLUX2BaseNode):
                                  subject_2=None, priority_2=2,
                                  subject_3=None, priority_3=3,
                                  subject_4=None, priority_4=4,
-                                 subject_5=None, priority_5=5):
+                                 subject_5=None, priority_5=5,
+                                 subject_6=None, priority_6=6,
+                                 subject_7=None, priority_7=7,
+                                 subject_8=None, priority_8=8,
+                                 subject_9=None, priority_9=9,
+                                 subject_10=None, priority_10=10,
+                                 subject_11=None, priority_11=10,
+                                 subject_12=None, priority_12=10):
         """
         Collect subjects with optional priority-based sorting.
         """
@@ -172,7 +210,10 @@ class FLUX2_SubjectArrayAdvanced(FLUX2BaseNode):
         subject_priority_pairs = []
         for subject, priority in [(subject_1, priority_1), (subject_2, priority_2),
                                   (subject_3, priority_3), (subject_4, priority_4),
-                                  (subject_5, priority_5)]:
+                                  (subject_5, priority_5), (subject_6, priority_6),
+                                  (subject_7, priority_7), (subject_8, priority_8),
+                                  (subject_9, priority_9), (subject_10, priority_10),
+                                  (subject_11, priority_11), (subject_12, priority_12)]:
             if subject is not None:
                 subject_priority_pairs.append((subject, priority))
         
