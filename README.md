@@ -505,3 +505,11 @@ If you use this codebase in your research or project, please cite:
 ---
 
 **Ready to build precise, professional prompts for FLUX.2? Install now and start creating!** 🚀
+
+## See Also
+
+- [DJZ-Workflows](https://github.com/MushroomFleet/DJZ-Workflows) — 1000+ ComfyUI workflows
+- [DJZ-Nodes](https://github.com/MushroomFleet/DJZ-Nodes) — Custom ComfyUI nodes
+- [ComfyUI-FLUX2-JSON](https://github.com/MushroomFleet/ComfyUI-FLUX2-JSON) — Flux 2 JSON nodes
+- [djz-Aesthetic-Embeddings](https://github.com/MushroomFleet/djz-Aesthetic-Embeddings) — Aesthetic embeddings
+- [svg-suite](https://github.com/MushroomFleet/svg-suite) — SVG generation toolkit
